@@ -5,15 +5,15 @@ import { motion } from "motion/react";
 
 export default function Experiences() {
   return (
-    <section className="p-20 max-w-360 mx-auto">
+    <section className="p-4 md:p-20 max-w-360 mx-auto">
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="font-bold text-5xl mb-12 max-w-200 text-balance leading-tight"
+        className="font-bold text-3xl md:text-5xl mb-8 md:mb-18 max-w-200 text-balance leading-tight"
       >
-        My Experiences
+        My experiences
       </motion.h1>
 
       <div className="relative mx-auto flex flex-col">

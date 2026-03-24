@@ -12,9 +12,9 @@ export default function Button({
   onClick,
 }: ButtonProps) {
   const baseStyles =
-    "relative border-4 border-black font-bold text-2xl text-center whitespace-nowrap transition-transform hover:scale-105";
-  const primaryStyles = "bg-[#bae6ff] rounded-full px-8 py-4";
-  const secondaryStyles = "bg-white px-8 py-3";
+    "relative border-4 border-black font-bold md:text-2xl text-lg text-center whitespace-nowrap transition-transform hover:scale-105";
+  const primaryStyles = "bg-[#bae6ff] rounded-full md:px-8 md:py-4 px-4 py-2";
+  const secondaryStyles = "bg-white md:px-8 md:py-3 px-4 py-2";
 
   return (
     <button
@@ -22,7 +22,7 @@ export default function Button({
       className={`${baseStyles} ${variant === "primary" ? primaryStyles : secondaryStyles} ${className}`}
     >
       {children}
-      <div className="absolute -bottom-14 -right-16 scale-75">
+      <div className="hidden md:block absolute -bottom-14 -right-16 scale-75">
         <Decoration />
       </div>
     </button>

@@ -9,21 +9,21 @@ import { motion } from "motion/react";
 export default function CTA() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <section id="contact" className="px-4 py-20">
+    <section id="contact" className="px-4 py-12 md:p-20">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="bg-white border-[6px] border-black border-solid shadow-[21px_21px_0px_0px_rgba(0,0,0,0.4)] mx-auto max-w-308 py-14"
+        className="bg-white border-[6px] border-black border-solid shadow-[21px_21px_0px_0px_rgba(0,0,0,0.4)] mx-auto max-w-308 px-4 py-8 md:py-14"
       >
-        <div className="text-center flex flex-col gap-4">
+        <div className="text-center flex flex-col gap-3 md:gap-4">
           <motion.h2
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-            className="font-medium text-5xl text-black"
+            className="font-medium text-3xl md:text-5xl text-black"
           >
             Let&apos;s Connect
           </motion.h2>
@@ -32,7 +32,7 @@ export default function CTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-            className="font-normal text-2xl text-center px-4 text-balance mx-auto"
+            className="font-normal text-lg md:text-2xl text-center px-4 text-balance mx-auto"
           >
             Have a question or just want to connect?
           </motion.p>
@@ -43,9 +43,9 @@ export default function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
-          className="flex items-center justify-center mt-8 relative"
+          className="flex items-center justify-center mt-6 md:mt-8 relative"
         >
-          <div className="flex items-center justify-center w-[352.904px]">
+          <div className="flex items-center justify-center w-full md:w-88">
             <Button onClick={() => setIsOpen(true)}>Contact me</Button>
           </div>
         </motion.div>
@@ -67,7 +67,7 @@ const ContactModal = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 md:px-4"
       onClick={onClose}
     >
       <motion.div
@@ -75,20 +75,20 @@ const ContactModal = ({
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="bg-white border-[6px] border-black border-solid shadow-[21px_21px_0px_0px_rgba(0,0,0,0.4)] w-full max-w-2xl"
+        className="bg-white border-[6px] border-black border-solid shadow-[21px_21px_0px_0px_rgba(0,0,0,0.4)] w-full h-full sm:h-auto max-w-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between p-6 border-b-4 border-black">
-          <h3 className="font-bold text-3xl">Contact Me</h3>
+        <div className="flex items-center justify-between p-4 md:p-6 border-b-4 border-black">
+          <h3 className="font-bold text-2xl md:text-3xl">Contact Me</h3>
           <button
             onClick={onClose}
-            className="w-12 h-12 flex items-center justify-center bg-red-500 border-4 border-black border-solid shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.4)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
+            className="size-8 md:size-12 flex items-center justify-center bg-red-500 border-4 border-black border-solid shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,0.4)] hover:translate-x-0.5 hover:translate-y-0.5 transition-all"
           >
             <XIcon />
           </button>
         </div>
 
-        <div className="p-6">
+        <div className="p-4 md:p-6">
           <SocialsList />
         </div>
       </motion.div>
@@ -131,7 +131,7 @@ const SocialCard = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
       onClick={handleClick}
-      className="w-full p-4 flex items-center gap-4 bg-white border-4 border-black border-solid shadow-[8px_8px_0px_0px_rgba(0,0,0,0.4)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] hover:translate-x-1 hover:translate-y-1 transition-all text-left cursor-pointer disabled:cursor-not-allowed disabled:shadow-none disabled:translate-x-0 disabled:translate-y-0"
+      className="w-full p-4 flex items-center gap-4 bg-white border-4 border-black border-solid shadow-[8px_8px_0px_0px_rgba(0,0,0,0.4)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] hover:translate-x-1 hover:translate-y-1 transition-all text-left cursor-pointer disabled:cursor-default"
       disabled={!social.link}
     >
       <Image src={social.img} alt={social.value} className="size-12 shrink-0" />

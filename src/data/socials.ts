@@ -11,7 +11,7 @@ const socials = [
     description: "Let's play games and chat with me!",
     img: discord,
     value: "FlatPee#0356",
-    link: null,
+    link: "http://discordapp.com/users/331764260474454019",
   },
   {
     id: 2,

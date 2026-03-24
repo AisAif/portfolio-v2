@@ -14,20 +14,20 @@ export default function Portfolio() {
   const ref = useRef<HTMLDivElement>(null);
 
   return (
-    <section id="portfolio" ref={ref} className="p-20 max-w-360 mx-auto">
+    <section id="portfolio" ref={ref} className="p-4 md:p-20 max-w-360 mx-auto">
       <motion.div
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="relative flex items-center justify-center mb-6 gap-12"
+        className="relative flex items-center justify-center mb-4 mt-4 md:mb-6 md:mt-0 gap-6 md:gap-12"
       >
         <motion.h2
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-          className="text-5xl font-bold"
+          className="text-3xl md:text-5xl font-bold"
         >
           My own projects
         </motion.h2>
@@ -36,13 +36,13 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, rotate: -45, scale: 1 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-          className="bg-[#BAE6FF] scale-50 shadow-[-9px_10px_0px_0px_rgba(0,0,0,0.44)] transform -translate-x-14 -translate-y-5"
+          className="hidden md:block bg-[#BAE6FF] scale-50 shadow-[-9px_10px_0px_0px_rgba(0,0,0,0.44)] transform -translate-x-14 -translate-y-5"
         >
           <Smile />
         </motion.div>
       </motion.div>
 
-      <div className="grid grid-cols-2 gap-20 mx-auto px-4 mb-12">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-20 mx-auto mb-12">
         {projects.slice(0, limit).map((project, index) => (
           <motion.a
             key={index}
@@ -59,9 +59,9 @@ export default function Portfolio() {
           >
             <Card
               shadow
-              className="h-134 p-8 border-4 hover:scale-105 transition duration-300 ease-in-out"
+              className="p-4 md:p-8 h-full border-4 hover:scale-105 transition duration-300 ease-in-out"
             >
-              <div className="border-4 border-black bg-red-200 border-solid h-74 relative mb-6">
+              <div className="border-4 border-black bg-red-200 border-solid h-48 md:h-74 relative mb-4 md:mb-6">
                 <Image
                   fill
                   src={project.img}
@@ -69,12 +69,16 @@ export default function Portfolio() {
                   className="object-cover"
                 />
               </div>
-              <div className="flex gap-16 items-start justify-center">
-                <div className="flex flex-col gap-3 items-start">
-                  <p className="font-bold text-2xl">{project.name}</p>
-                  <p className="font-medium">{project.description}</p>
+              <div className="flex gap-4 md:gap-16 items-start justify-center">
+                <div className="flex flex-col gap-2 md:gap-3 items-start flex-1">
+                  <p className="font-bold text-lg md:text-2xl">
+                    {project.name}
+                  </p>
+                  <p className="font-medium text-sm md:text-base">
+                    {project.description}
+                  </p>
                 </div>
-                <div className="bg-black overflow-clip shadow-[4px_4px_0px_0px_#8e8f87] size-8 aspect-square">
+                <div className="bg-black overflow-clip shadow-[4px_4px_0px_0px_#8e8f87] size-6 md:size-8 aspect-square shrink-0">
                   <Image
                     src={arrowRightUpIcon}
                     alt="arrowRightUpIcon"

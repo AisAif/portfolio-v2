@@ -10,9 +10,9 @@ export default function Services() {
         {techStack.map((tech, index) => (
           <div
             key={index}
-            className="py-8 mx-8 flex flex-col items-center gap-2 min-w-32"
+            className="py-6 md:py-8 mx-4 md:mx-8 flex flex-col items-center gap-2 min-w-24 md:min-w-32"
           >
-            <div className="relative w-20 h-20">
+            <div className="relative w-16 h-16 md:w-20 md:h-20">
               <Image
                 src={tech.image}
                 alt={tech.name}
@@ -20,7 +20,7 @@ export default function Services() {
                 className="object-contain"
               />
             </div>
-            <span className="text-sm font-medium text-white">{tech.name}</span>
+            <span className="text-xs md:text-sm font-medium text-white">{tech.name}</span>
           </div>
         ))}
       </Marquee>
