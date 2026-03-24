@@ -4,25 +4,52 @@ import Button from "../ui/Button";
 import socials from "@/data/socials";
 import Image, { StaticImageData } from "next/image";
 import { XIcon } from "lucide-react";
+import { motion } from "motion/react";
 
 export default function CTA() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <section id="contact" className="px-4 py-20">
-      <div className="bg-white border-[6px] border-black border-solid shadow-[21px_21px_0px_0px_rgba(0,0,0,0.4)] mx-auto max-w-308 py-14">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="bg-white border-[6px] border-black border-solid shadow-[21px_21px_0px_0px_rgba(0,0,0,0.4)] mx-auto max-w-308 py-14"
+      >
         <div className="text-center flex flex-col gap-4">
-          <h2 className="font-medium text-5xl text-black">Let’s Connect</h2>
-          <p className="font-normal text-2xl text-center px-4 text-balance mx-auto">
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+            className="font-medium text-5xl text-black"
+          >
+            Let&apos;s Connect
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
+            className="font-normal text-2xl text-center px-4 text-balance mx-auto"
+          >
             Have a question or just want to connect?
-          </p>
+          </motion.p>
         </div>
 
-        <div className="flex items-center justify-center mt-8 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.3, ease: "easeOut" }}
+          className="flex items-center justify-center mt-8 relative"
+        >
           <div className="flex items-center justify-center w-[352.904px]">
             <Button onClick={() => setIsOpen(true)}>Contact me</Button>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       <ContactModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
     </section>
@@ -43,7 +70,11 @@ const ContactModal = ({
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4"
       onClick={onClose}
     >
-      <div
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
         className="bg-white border-[6px] border-black border-solid shadow-[21px_21px_0px_0px_rgba(0,0,0,0.4)] w-full max-w-2xl"
         onClick={(e) => e.stopPropagation()}
       >
@@ -60,7 +91,7 @@ const ContactModal = ({
         <div className="p-6">
           <SocialsList />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
@@ -68,8 +99,8 @@ const ContactModal = ({
 const SocialsList = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      {socials.map((social) => (
-        <SocialCard key={social.id} social={social} />
+      {socials.map((social, index) => (
+        <SocialCard key={social.id} social={social} index={index} />
       ))}
     </div>
   );
@@ -77,6 +108,7 @@ const SocialsList = () => {
 
 const SocialCard = ({
   social,
+  index,
 }: {
   social: {
     id: number;
@@ -85,6 +117,7 @@ const SocialCard = ({
     value: string;
     description: string;
   };
+  index: number;
 }) => {
   const handleClick = () => {
     if (social.link) {
@@ -93,7 +126,10 @@ const SocialCard = ({
   };
 
   return (
-    <button
+    <motion.button
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
       onClick={handleClick}
       className="w-full p-4 flex items-center gap-4 bg-white border-4 border-black border-solid shadow-[8px_8px_0px_0px_rgba(0,0,0,0.4)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.4)] hover:translate-x-1 hover:translate-y-1 transition-all text-left cursor-pointer disabled:cursor-not-allowed disabled:shadow-none disabled:translate-x-0 disabled:translate-y-0"
       disabled={!social.link}
@@ -105,7 +141,7 @@ const SocialCard = ({
           {social.description}
         </p>
       </div>
-    </button>
+    </motion.button>
   );
 };
 
